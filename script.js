@@ -9,19 +9,21 @@ $( document ).ready(function(){
     searchButton.addEventListener("click", function(event) {
         event.preventDefault()
         var city = document.getElementById("search-input").value
+        let geoURL = "http://api.openweathermap.org/geo/1.0/direct?q="+city+"&limit=5&appid=c5f801d62e4ccdab988d155cc4462710"
         console.log(city);
 
         $.ajax({
-            url: queryURL,
+            url: geoURL,
             method: "GET"
           }).then(function(response){
+            console.log(response)
 
-            $.ajax({
-                url: queryURL,
-                method: "GET"
-              }).then(function(response){
+            // $.ajax({
+            //     url: queryURL,
+            //     method: "GET"
+            //   }).then(function(response){
 
-              })
+            //   })
 
           }
     )})
