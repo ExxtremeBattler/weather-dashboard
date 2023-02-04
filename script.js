@@ -16,7 +16,7 @@ $( document ).ready(function(){
             url: geoURL,
             method: "GET"
           }).then(function(response){
-            console.log(response)
+            console.log(response[0].lat, response[0].lon)
 
             // $.ajax({
             //     url: queryURL,
