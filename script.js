@@ -28,9 +28,11 @@ $( document ).ready(function(){
               }).then(function(response){
                 console.log(response);
                 linebreak = document.createElement("br");
-                todaySection.append(response.city.name+"("+moment().format('L')+")", 
+                todaySection.append(response.city.name+" ("+moment().format('L')+")", 
                 linebreak, 
-                response.list[0].main.temp)
+                "Temp : " + response.list[0].main.temp + "°C",
+                "Humidity : " + response.list[0].main.humidity + "%")
+
             
 
               })
