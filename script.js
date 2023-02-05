@@ -1,5 +1,6 @@
 $( document ).ready(function(){
     let todaySection = document.getElementById("today")
+    let forecastSection = document.getElementById("forecast")
     let searchButton = document.getElementById("search-button")
     
     searchButton.addEventListener("click", function(event) {
@@ -36,15 +37,25 @@ $( document ).ready(function(){
                 document.createElement("br"),
                 "Wind : " + response.list[0].wind.speed + "KPH")
 
+                for (let i = 0; i <response.list.length; i++) {
 
-            
+                  if (i % 8 === 0 && i != 0 ){
 
-              })
+                    console.log(response.list[i])
+                    forecastSection.append("Temp : " + response.list[i].main.temp + "°C",
+                    document.createElement("br"),
+                    "Humidity : " + response.list[i].main.humidity + "%",
+                     document.createElement("br"),
+                    "Wind : " + response.list[i].wind.speed + "KPH") 
+                  }}})})})})
+                    
+                   
+                  
+                  
 
-          }
-    )})
-
-})
+                  
+                  
+                
 
 
 
