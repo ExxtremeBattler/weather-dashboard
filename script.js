@@ -38,15 +38,23 @@ $( document ).ready(function(){
                 "Wind : " + response.list[0].wind.speed + "KPH")
 
                 for (let i = 0; i <response.list.length; i++) {
+                  
 
                   if (i % 8 === 0 && i != 0 ){
+                    
 
                     console.log(response.list[i])
-                    forecastSection.append("Temp : " + response.list[i].main.temp + "°C",
+                    forecastSection.append( response.list[i].dt_txt,
+                      document.createElement("br"),
+                      "Temp : " + response.list[i].main.temp + "°C",
                     document.createElement("br"),
                     "Humidity : " + response.list[i].main.humidity + "%",
                      document.createElement("br"),
-                    "Wind : " + response.list[i].wind.speed + "KPH") 
+                    "Wind : " + response.list[i].wind.speed + "KPH",
+                    document.createElement("br"),
+                    document.createElement("br"),
+
+                    ) 
                   }}})})})})
                     
                    
