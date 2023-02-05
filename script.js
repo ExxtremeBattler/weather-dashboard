@@ -27,7 +27,11 @@ $( document ).ready(function(){
                 method: "GET"
               }).then(function(response){
                 console.log(response);
-                todaySection.append(response.city.name+"("+moment().format('L')+")")
+                linebreak = document.createElement("br");
+                todaySection.append(response.city.name+"("+moment().format('L')+")", 
+                linebreak, 
+                response.list[0].main.temp)
+            
 
               })
 
