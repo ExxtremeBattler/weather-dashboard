@@ -26,12 +26,16 @@ $( document ).ready(function(){
                 url: queryURL,
                 method: "GET"
               }).then(function(response){
-                console.log(response);
-                linebreak = document.createElement("br");
+                
+                console.log(response)
                 todaySection.append(response.city.name+" ("+moment().format('L')+")", 
-                linebreak, 
+                document.createElement("br"), 
                 "Temp : " + response.list[0].main.temp + "°C",
-                "Humidity : " + response.list[0].main.humidity + "%")
+                document.createElement("br"),
+                "Humidity : " + response.list[0].main.humidity + "%",
+                document.createElement("br"),
+                "Wind : " + response.list[0].wind.speed + "KPH")
+
 
             
 
