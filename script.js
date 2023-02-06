@@ -6,34 +6,38 @@ $( document ).ready(function(){
     var count = 0
 
 
-    button1 = document.createElement("button")
-    button2 = document.createElement("button")
-    button3 = document.createElement("button")
-    button4 = document.createElement("button")
-    button5 = document.createElement("button")
-    button6 = document.createElement("button")
+    let button1 = document.getElementById("button1")
+    let button2 = document.getElementById("button2")
+    let button3 = document.getElementById("button3")
+    let button4 = document.getElementById("button4") 
+    let button5 = document.getElementById("button5")
+    let button6 = document.getElementById("button6")
 
 
+    function loadHistory() {
+        button1.innerHTML = localStorage.getItem("search1"),
+        document.createElement("br"),
+        
+        button2.innerHTML = localStorage.getItem("search2"),
+        document.createElement("br"),
+        
+        button3.innerHTML = localStorage.getItem("search3"),
+        document.createElement("br"),
+       
+        button4.innerHTML = localStorage.getItem("search4"),
+        document.createElement("br"),
+        
+        button5.innerHTML = localStorage.getItem("search5"),
+        document.createElement("br"),
+        
+        button6.innerHTML = localStorage.getItem("search6"),
+        document.createElement("br")
+    }
+    
 
-   historySection.append(
-   button1.innerHTML = localStorage.getItem("search1"),
-   document.createElement("br"),
+    loadHistory()
+
    
-   button2.innerHTML = localStorage.getItem("search2"),
-   document.createElement("br"),
-   
-   button3.innerHTML = localStorage.getItem("search3"),
-   document.createElement("br"),
-  
-   button4.innerHTML = localStorage.getItem("search4"),
-   document.createElement("br"),
-   
-   button5.innerHTML = localStorage.getItem("search5"),
-   document.createElement("br"),
-   
-   button6.innerHTML = localStorage.getItem("search6"),
-   document.createElement("br")
-   )    
     
     searchButton.addEventListener("click", function(event) {
         event.preventDefault()
@@ -47,6 +51,8 @@ $( document ).ready(function(){
         let geoURL = "http://api.openweathermap.org/geo/1.0/direct?q="+city+"&limit=5&appid=c5f801d62e4ccdab988d155cc4462710"
 
         localStorage.setItem("search"+count,city)
+        loadHistory()
+
      
         
        
