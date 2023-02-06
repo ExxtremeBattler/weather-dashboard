@@ -2,14 +2,53 @@ $( document ).ready(function(){
     let todaySection = document.getElementById("today")
     let forecastSection = document.getElementById("forecast")
     let searchButton = document.getElementById("search-button")
+    let historySection = document.getElementById("history")
+    var count = 0
+
+
+    button1 = document.createElement("button")
+    button2 = document.createElement("button")
+    button3 = document.createElement("button")
+    button4 = document.createElement("button")
+    button5 = document.createElement("button")
+    button6 = document.createElement("button")
+
+
+
+   historySection.append(
+   button1.innerHTML = localStorage.getItem("search1"),
+   document.createElement("br"),
+   
+   button2.innerHTML = localStorage.getItem("search2"),
+   document.createElement("br"),
+   
+   button3.innerHTML = localStorage.getItem("search3"),
+   document.createElement("br"),
+  
+   button4.innerHTML = localStorage.getItem("search4"),
+   document.createElement("br"),
+   
+   button5.innerHTML = localStorage.getItem("search5"),
+   document.createElement("br"),
+   
+   button6.innerHTML = localStorage.getItem("search6"),
+   document.createElement("br")
+   )    
     
     searchButton.addEventListener("click", function(event) {
         event.preventDefault()
+        todaySection.innerHTML = ""
+        forecastSection.innerHTML = ""
+         count++
         
         var city = document.getElementById("search-input").value
         var latitude
         var longitude
         let geoURL = "http://api.openweathermap.org/geo/1.0/direct?q="+city+"&limit=5&appid=c5f801d62e4ccdab988d155cc4462710"
+
+        localStorage.setItem("search"+count,city)
+     
+        
        
 
         $.ajax({
