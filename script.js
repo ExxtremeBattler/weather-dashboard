@@ -2,8 +2,10 @@ $( document ).ready(function(){
     let todaySection = document.getElementById("today")
     let forecastSection = document.getElementById("forecast")
     let searchButton = document.getElementById("search-button")
-    let historySection = document.getElementById("history")
+
     var count = 0
+
+
 
 
     let button1 = document.getElementById("button1")
@@ -14,6 +16,9 @@ $( document ).ready(function(){
     let button6 = document.getElementById("button6")
 
     let historyButtonsArray = document.querySelectorAll(".history-button")
+    let forecastCardsArray = document.querySelectorAll(".card")
+    let forecastCardsTitles = document.querySelectorAll(".card-title")
+    let forecastCardsText = document.querySelectorAll(".card-text")
 
     historyButtonsArray.forEach(element => {
       
@@ -55,24 +60,27 @@ $( document ).ready(function(){
                 "Wind : " + response.list[0].wind.speed + "KPH")
 
                 for (let i = 0; i <response.list.length; i++) {
-                  
-
-                  if (i % 8 === 0 && i != 0 ){
+                  for (let j = 0; j < forecastCardsArray.length; j++) {
+                    
+                    if (i % 8 === 0 && i != 0 ){
                     
 
-                    console.log(response.list[i])
-                    forecastSection.append( response.list[i].dt_txt,
+                      forecastCardsTitles[j].innerHTML = response.list[i].dt_txt,
+                        document.createElement("br")
+  
+                        "Temp : " + response.list[i].main.temp + "°C",
                       document.createElement("br"),
-                      "Temp : " + response.list[i].main.temp + "°C",
-                    document.createElement("br"),
-                    "Humidity : " + response.list[i].main.humidity + "%",
-                     document.createElement("br"),
-                    "Wind : " + response.list[i].wind.speed + "KPH",
-                    document.createElement("br"),
-                    document.createElement("br"),
+                      "Humidity : " + response.list[i].main.humidity + "%",
+                       document.createElement("br"),
+                      "Wind : " + response.list[i].wind.speed + "KPH",
+                      document.createElement("br"),
+                      document.createElement("br")
+  
+                    }}}})})})
 
-                    ) 
-                  }}})})})})
+                    
+
+                  
                     
                    
                   
@@ -167,7 +175,7 @@ $( document ).ready(function(){
                     document.createElement("br"),
 
                     ) 
-                  }}})})})})
+                  }}})})})})})
                     
                    
                   
