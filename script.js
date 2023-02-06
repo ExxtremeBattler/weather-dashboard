@@ -13,6 +13,76 @@ $( document ).ready(function(){
     let button5 = document.getElementById("button5")
     let button6 = document.getElementById("button6")
 
+    let historyButtonsArray = document.querySelectorAll(".history-button")
+
+    historyButtonsArray.forEach(element => {
+      
+      
+      element.addEventListener("click", function(event){
+      
+      todaySection.innerHTML = ""
+      forecastSection.innerHTML = ""
+
+      var city = event.target.innerHTML
+        var latitude
+        var longitude
+        let geoURL = "http://api.openweathermap.org/geo/1.0/direct?q="+city+"&limit=5&appid=c5f801d62e4ccdab988d155cc4462710"
+       
+
+        $.ajax({
+            url: geoURL,
+            method: "GET"
+          }).then(function(response){
+            latitude = response[0].lat
+            longitude = response[0].lon
+            let queryURL = "https://api.openweathermap.org/data/2.5/forecast?lat="+latitude+"&lon="+longitude+
+    "&appid=c5f801d62e4ccdab988d155cc4462710"
+            
+
+
+            $.ajax({
+                url: queryURL,
+                method: "GET"
+              }).then(function(response){
+                
+                console.log(response)
+                todaySection.append(response.city.name+" ("+moment().format('L')+")", 
+                document.createElement("br"), 
+                "Temp : " + response.list[0].main.temp + "°C",
+                document.createElement("br"),
+                "Humidity : " + response.list[0].main.humidity + "%",
+                document.createElement("br"),
+                "Wind : " + response.list[0].wind.speed + "KPH")
+
+                for (let i = 0; i <response.list.length; i++) {
+                  
+
+                  if (i % 8 === 0 && i != 0 ){
+                    
+
+                    console.log(response.list[i])
+                    forecastSection.append( response.list[i].dt_txt,
+                      document.createElement("br"),
+                      "Temp : " + response.list[i].main.temp + "°C",
+                    document.createElement("br"),
+                    "Humidity : " + response.list[i].main.humidity + "%",
+                     document.createElement("br"),
+                    "Wind : " + response.list[i].wind.speed + "KPH",
+                    document.createElement("br"),
+                    document.createElement("br"),
+
+                    ) 
+                  }}})})})})
+                    
+                   
+                  
+                  
+      
+    
+
+
+    
+      
 
     function loadHistory() {
         button1.innerHTML = localStorage.getItem("search1"),
@@ -52,9 +122,6 @@ $( document ).ready(function(){
 
         localStorage.setItem("search"+count,city)
         loadHistory()
-
-     
-        
        
 
         $.ajax({
