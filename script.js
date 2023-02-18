@@ -5,9 +5,6 @@ $( document ).ready(function(){
 
     var count = 0
 
-
-
-
     let button1 = document.getElementById("button1")
     let button2 = document.getElementById("button2")
     let button3 = document.getElementById("button3")
@@ -76,40 +73,21 @@ $( document ).ready(function(){
                       document.createElement("br"),
                       document.createElement("br")
   
-                    }}}})})})
-
-                    
-
-                  
-                    
-                   
-                  
-                  
-      
-    
-
-
-    
+                    }}}})})})})
       
 
     function loadHistory() {
         button1.innerHTML = localStorage.getItem("search1"),
-        document.createElement("br"),
         
         button2.innerHTML = localStorage.getItem("search2"),
-        document.createElement("br"),
         
         button3.innerHTML = localStorage.getItem("search3"),
-        document.createElement("br"),
-       
+
         button4.innerHTML = localStorage.getItem("search4"),
-        document.createElement("br"),
         
         button5.innerHTML = localStorage.getItem("search5"),
-        document.createElement("br"),
         
-        button6.innerHTML = localStorage.getItem("search6"),
-        document.createElement("br")
+        button6.innerHTML = localStorage.getItem("search6")
     }
     
 
@@ -119,6 +97,8 @@ $( document ).ready(function(){
     
     searchButton.addEventListener("click", function(event) {
         event.preventDefault()
+        console.log(localStorage.getItem("search"+count))
+        console.log(count);
         todaySection.innerHTML = ""
         forecastSection.innerHTML = ""
          count++
@@ -175,7 +155,7 @@ $( document ).ready(function(){
                     document.createElement("br"),
 
                     ) 
-                  }}})})})})})
+                  }}})})})})
                     
                    
                   
