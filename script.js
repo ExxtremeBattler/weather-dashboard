@@ -1,7 +1,9 @@
 $( document ).ready(function(){
     let todaySection = document.getElementById("today")
+    let todayHeader = document.getElementById("todayHeader")
     let forecastSection = document.getElementById("forecast")
     let searchButton = document.getElementById("search-button")
+    let todayInfo = document.getElementById("todayInfo")
 
     var count = 0
 
@@ -46,15 +48,21 @@ $( document ).ready(function(){
                 url: queryURL,
                 method: "GET"
               }).then(function(response){
-                
+
                 console.log(response)
-                todaySection.append(response.city.name+" ("+moment().format('L')+")", 
-                document.createElement("br"), 
+                
+                
+                todayHeader.innerHTML = (response.city.name + " ("+moment().format('L')+")")
+
+                todaySection.append( document.createElement("br"), 
+                document.createElement("br"),
                 "Temp : " + response.list[0].main.temp + "°C",
+                document.createElement("br"),
                 document.createElement("br"),
                 "Humidity : " + response.list[0].main.humidity + "%",
                 document.createElement("br"),
-                "Wind : " + response.list[0].wind.speed + "KPH")
+                document.createElement("br"),
+                "Wind : " + response.list[0].wind.speed + "KPH" )
 
                 for (let i = 0; i <response.list.length; i++) {
                   for (let j = 0; j < forecastCardsArray.length; j++) {
@@ -129,11 +137,16 @@ $( document ).ready(function(){
               }).then(function(response){
                 
                 console.log(response)
-                todaySection.append(response.city.name+" ("+moment().format('L')+")", 
-                document.createElement("br"), 
+
+                todayHeader.innerHTML = (response.city.name + "( "+moment().format('L') +" )")
+
+                todaySection.append( document.createElement("br"), 
+                document.createElement("br"),
                 "Temp : " + response.list[0].main.temp + "°C",
                 document.createElement("br"),
+                document.createElement("br"),
                 "Humidity : " + response.list[0].main.humidity + "%",
+                document.createElement("br"),
                 document.createElement("br"),
                 "Wind : " + response.list[0].wind.speed + "KPH")
 

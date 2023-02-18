@@ -1,0 +1,18 @@
+#today {
+    padding: 5px;
+    border: 5px;
+    border-radius: 5px;
+    border-style: solid;
+    border-color: black;
+  }
+
+  #todayHeader {
+    z-index: 1;
+    font-weight: bold;
+    color: rgb(5, 1, 1);
+    position: relative;
+    top: 55px;
+    left: 10px;
+  }
+  
+  
