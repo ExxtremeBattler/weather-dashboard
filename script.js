@@ -3,6 +3,7 @@ $( document ).ready(function(){
     let todayHeader = document.getElementById("todayHeader")
     let forecastSection = document.getElementById("forecast")
     let searchButton = document.getElementById("search-button")
+    let searchInput = document.getElementById("search-input")
     let todayInfo = document.getElementById("todayInfo")
 
     var count = 0
@@ -75,7 +76,7 @@ $( document ).ready(function(){
 
                     console.log("found one!")
                     
-                      forecastCardsTitles[count2].innerHTML = response.list[i].dt_txt
+                      forecastCardsTitles[count2].innerHTML = response.list[i].dt_txt //+" " + response.list[i].weather[0].icon
 
                       var forecastTemp = "Temp : " + response.list[i].main.temp + "°C  " 
                       var forecastHumidity = "Humidity : " + response.list[i].main.humidity + "% " 
@@ -110,8 +111,14 @@ $( document ).ready(function(){
     
     searchButton.addEventListener("click", function(event) {
         event.preventDefault()
-        console.log(localStorage.getItem("search"+count))
-        console.log(count);
+
+        if (searchInput.value === "") {
+
+          alert("Invalid input! Please try again.")
+          
+        } else {
+          
+        
         todaySection.innerHTML = ""
         forecastSection.innerHTML = ""
          count++
@@ -141,8 +148,6 @@ $( document ).ready(function(){
                 method: "GET"
               }).then(function(response){
                 
-                console.log(response)
-
                 todayHeader.innerHTML = (response.city.name + "( "+moment().format('L') +" )")
 
                 todaySection.append( document.createElement("br"), 
@@ -159,21 +164,21 @@ $( document ).ready(function(){
                   
 
                   if (i % 8 === 0 && i != 0 ){
+
+                    console.log("found one!")
                     
+                      forecastCardsTitles[count2].innerHTML = response.list[i].dt_txt //+" " + response.list[i].weather[0].icon
 
-                    console.log(response.list[i])
-                    forecastSection.append( response.list[i].dt_txt,
-                      document.createElement("br"),
-                      "Temp : " + response.list[i].main.temp + "°C",
-                    document.createElement("br"),
-                    "Humidity : " + response.list[i].main.humidity + "%",
-                     document.createElement("br"),
-                    "Wind : " + response.list[i].wind.speed + "KPH",
-                    document.createElement("br"),
-                    document.createElement("br"),
+                      var forecastTemp = "Temp : " + response.list[i].main.temp + "°C  " 
+                      var forecastHumidity = "Humidity : " + response.list[i].main.humidity + "% " 
+                      var forecastWind = "Wind : " + response.list[i].wind.speed + "KPH"
 
-                    ) 
-                  }}})})})})
+                      forecastCardsText[count2].innerHTML = ""
+                      forecastCardsText[count2].append(forecastTemp, forecastHumidity, forecastWind)
+
+                      count2 ++
+  
+                    }}})})}})})
                     
                    
                   
