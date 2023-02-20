@@ -7,7 +7,6 @@ $( document ).ready(function(){
     let todayInfo = document.getElementById("todayInfo")
 
     var count = 0
-    var count2 = 0
 
     let button1 = document.getElementById("button1")
     let button2 = document.getElementById("button2")
@@ -50,8 +49,9 @@ $( document ).ready(function(){
                 url: queryURL,
                 method: "GET"
               }).then(function(response){
-
                 console.log(response)
+
+                var count2 = 0
                 
                 
                 todayHeader.innerHTML = (response.city.name + " ("+moment().format('L')+")")
@@ -67,7 +67,6 @@ $( document ).ready(function(){
                 "Wind : " + response.list[0].wind.speed + "KPH" )
 
                 for (let i = 0; i <response.list.length; i++) {
-
                  
 
                   console.log("i is " +i);
@@ -75,15 +74,19 @@ $( document ).ready(function(){
                   if (i % 8 === 0 && i != 0 ){
 
                     console.log("found one!")
-                    
-                      forecastCardsTitles[count2].innerHTML = response.list[i].dt_txt //+" " + response.list[i].weather[0].icon
+                    console.log(count2)
+        
 
-                      var forecastTemp = "Temp : " + response.list[i].main.temp + "°C  " 
-                      var forecastHumidity = "Humidity : " + response.list[i].main.humidity + "% " 
-                      var forecastWind = "Wind : " + response.list[i].wind.speed + "KPH"
+                    console.log(forecastCardsTitles[count2])
+
+                      forecastCardsTitles[count2].innerHTML = " "
+                      forecastCardsTitles[count2].append(response.list[i].dt_txt)
 
                       forecastCardsText[count2].innerHTML = ""
-                      forecastCardsText[count2].append(forecastTemp, forecastHumidity, forecastWind)
+                      
+                      forecastCardsText[count2].append("Temp : " + response.list[i].main.temp + "°C  ", 
+                      "Humidity : " + response.list[i].main.humidity + "% ",
+                      "Wind : " + response.list[i].wind.speed + "KPH")
 
                       count2 ++
   
@@ -147,6 +150,7 @@ $( document ).ready(function(){
                 url: queryURL,
                 method: "GET"
               }).then(function(response){
+                var count3 = 0
                 
                 todayHeader.innerHTML = (response.city.name + "( "+moment().format('L') +" )")
 
@@ -162,21 +166,20 @@ $( document ).ready(function(){
 
                 for (let i = 0; i <response.list.length; i++) {
                   
-
                   if (i % 8 === 0 && i != 0 ){
 
                     console.log("found one!")
+                    console.log(count3);
+                    console.log("i is" +i);
                     
-                      forecastCardsTitles[count2].innerHTML = response.list[i].dt_txt //+" " + response.list[i].weather[0].icon
+                      forecastCardsTitles[count3].innerHTML = response.list[i].dt_txt //+" " + response.list[i].weather[0].icon
 
-                      var forecastTemp = "Temp : " + response.list[i].main.temp + "°C  " 
-                      var forecastHumidity = "Humidity : " + response.list[i].main.humidity + "% " 
-                      var forecastWind = "Wind : " + response.list[i].wind.speed + "KPH"
+                      forecastCardsText[count3].innerHTML = ""
+                      forecastCardsText[count3].append("Temp : " + response.list[i].main.temp + "°C  ",
+                      "Humidity : " + response.list[i].main.humidity + "% ",
+                      "Wind : " + response.list[i].wind.speed + "KPH")
 
-                      forecastCardsText[count2].innerHTML = ""
-                      forecastCardsText[count2].append(forecastTemp, forecastHumidity, forecastWind)
-
-                      count2 ++
+                      count3++
   
                     }}})})}})})
                     
