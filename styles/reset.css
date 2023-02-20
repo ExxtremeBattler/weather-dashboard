@@ -14,5 +14,22 @@
     top: 55px;
     left: 10px;
   }
+
+  .history-button {
+    background-color: gray;
+    padding: 15px 32px;
+    width: 100%;
+    margin: 10px
+  }
+
+  .card {
+    height: 500px;
+  }
+
+  .card-text {
+    white-space: pre-line;
+  }
+
+
   
   

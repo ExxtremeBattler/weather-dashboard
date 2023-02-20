@@ -6,6 +6,7 @@ $( document ).ready(function(){
     let todayInfo = document.getElementById("todayInfo")
 
     var count = 0
+    var count2 = 0
 
     let button1 = document.getElementById("button1")
     let button2 = document.getElementById("button2")
@@ -65,23 +66,27 @@ $( document ).ready(function(){
                 "Wind : " + response.list[0].wind.speed + "KPH" )
 
                 for (let i = 0; i <response.list.length; i++) {
-                  for (let j = 0; j < forecastCardsArray.length; j++) {
-                    
-                    if (i % 8 === 0 && i != 0 ){
-                    
 
-                      forecastCardsTitles[j].innerHTML = response.list[i].dt_txt,
-                        document.createElement("br")
+                 
+
+                  console.log("i is " +i);
+
+                  if (i % 8 === 0 && i != 0 ){
+
+                    console.log("found one!")
+                    
+                      forecastCardsTitles[count2].innerHTML = response.list[i].dt_txt
+
+                      var forecastTemp = "Temp : " + response.list[i].main.temp + "°C  " 
+                      var forecastHumidity = "Humidity : " + response.list[i].main.humidity + "% " 
+                      var forecastWind = "Wind : " + response.list[i].wind.speed + "KPH"
+
+                      forecastCardsText[count2].innerHTML = ""
+                      forecastCardsText[count2].append(forecastTemp, forecastHumidity, forecastWind)
+
+                      count2 ++
   
-                        "Temp : " + response.list[i].main.temp + "°C",
-                      document.createElement("br"),
-                      "Humidity : " + response.list[i].main.humidity + "%",
-                       document.createElement("br"),
-                      "Wind : " + response.list[i].wind.speed + "KPH",
-                      document.createElement("br"),
-                      document.createElement("br")
-  
-                    }}}})})})})
+                    }}})})})})
       
 
     function loadHistory() {
