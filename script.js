@@ -31,7 +31,7 @@ $( document ).ready(function(){
       var city = event.target.innerHTML
         var latitude
         var longitude
-        let geoURL = "http://api.openweathermap.org/geo/1.0/direct?q="+city+"&limit=5&appid=c5f801d62e4ccdab988d155cc4462710"
+        let geoURL = "https://api.openweathermap.org/geo/1.0/direct?q="+city+"&limit=5&appid=c5f801d62e4ccdab988d155cc4462710"
        
 
         $.ajax({
@@ -129,7 +129,7 @@ $( document ).ready(function(){
         var city = document.getElementById("search-input").value
         var latitude
         var longitude
-        let geoURL = "http://api.openweathermap.org/geo/1.0/direct?q="+city+"&limit=5&appid=c5f801d62e4ccdab988d155cc4462710"
+        let geoURL = "https://api.openweathermap.org/geo/1.0/direct?q="+city+"&limit=5&appid=c5f801d62e4ccdab988d155cc4462710"
 
         localStorage.setItem("search"+count,city)
         loadHistory()
