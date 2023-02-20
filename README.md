@@ -22,6 +22,9 @@ To use the program, enter a city of your choosing and click 'search'. The weathe
 
 Recent searches will be saved under the search bar. Clicking them will reveal the information for the targeted city once more.
 
+![Weather Dashboard](https://user-images.githubusercontent.com/69109391/220102247-9dbff4c6-76ce-4779-a008-30a10c675075.gif)
+
+
 ## Credits
 
 The bootcamp for teaching me the skills required for this project, Jesus Christ our Lord, and lastly myself, ExxtremeBattler 
